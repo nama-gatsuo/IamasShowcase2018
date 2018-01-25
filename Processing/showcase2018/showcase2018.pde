@@ -18,7 +18,8 @@ boolean light4 = false;
 
  
 void setup() {
-  size(400,400);
+  size(100,100);
+  background(128, 168, 199);
   myPort = new Serial(this,Serial.list()[3],9600);
   
   print(Serial.list()[3]);
