@@ -1,0 +1,10 @@
+*/.DS_Store
+*.map
+
+server/node_modules
+arduino/libraries
+Processing/examples
+Processing/libraries
+Processing/modes
+Processing/templates
+Processing/tools
