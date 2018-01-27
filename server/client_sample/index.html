@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Milkcocoa sample</title>
+</head>
+<body>
+    <ul>
+        <li id="l0" value="0">light 0</li>
+        <li id="l1" value="1">light 1</li>
+        <li id="l2" value="2">light 2</li>
+        <li id="l3" value="3">light 3</li>
+    </ul>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.mlkcca.com/v0.6.0/milkcocoa.js"></script>
+<script>
+window.onload = function(){
+    var milkcocoa = MilkCocoa.connectWithApiKey('bluejcw1ch34.mlkcca.com', 'HJKKNPPHCNNJDKIL', 'hAYYdlfJaUJUCSKIegQEQaaWUTHfDjTQMgODXkhf');
+    var ds = milkcocoa.dataStore('light');
+
+    for (var i = 0; i < 4; i++) {
+
+        // clickされたらidを送る
+        $("#l"+i).click(function(e){
+
+            var lightNum = $(this).attr('value');
+            ds.send({ n: lightNum });
+            console.log("light " + lightNum + " signal was sent");
+
+        });
+
+    }
+
+};
+</script>
+</html>

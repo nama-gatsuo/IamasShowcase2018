@@ -22,6 +22,10 @@ var _osc = require('osc');
 
 var _osc2 = _interopRequireDefault(_osc);
 
+var _milkcocoa = require('milkcocoa');
+
+var _milkcocoa2 = _interopRequireDefault(_milkcocoa);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -67,11 +71,24 @@ var App = function () {
                     args: [{ type: 'i', value: param - 0 }]
                 }, '0.0.0.0', P5_PORT);
 
-                console.log('--send--');
+                console.log('++send++');
                 console.log('query: ' + param);
-                console.log('--');
+                console.log('++ - - ++');
             } else {
                 res.send('fail');
+            }
+        });
+
+        this.milkcocoa = _milkcocoa2.default.connectWithApiKey('bluejcw1ch34.mlkcca.com', 'HJKKNPPHCNNJDKIL', 'hAYYdlfJaUJUCSKIegQEQaaWUTHfDjTQMgODXkhf');
+        this.dataStore = this.milkcocoa.dataStore('light');
+        this.dataStore.on('send', function (e) {
+            console.log(e);
+
+            if (e.path === 'light') {
+                _this.udpPort.send({
+                    address: '/',
+                    args: [{ type: 'i', value: e.value }]
+                }, '0.0.0.0', P5_PORT);
             }
         });
     }

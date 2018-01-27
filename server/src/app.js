@@ -3,6 +3,7 @@ import path from 'path'
 import logger from 'morgan'
 import http from 'http'
 import osc from 'osc'
+import MilkCocoa from 'milkcocoa'
 
 const SERVER_PORT = '8080';
 const UDP_PORT = '7777';
@@ -41,13 +42,26 @@ class App {
                     args: [{ type: 'i', value: param-0 }]
                 }, '0.0.0.0', P5_PORT);
 
-                console.log('--send--');
+                console.log('++send++');
                 console.log('query: ' + param);
-                console.log('--');
+                console.log('++ - - ++');
             } else {
                 res.send('fail');
             }
 
+        });
+
+        this.milkcocoa = MilkCocoa.connectWithApiKey('bluejcw1ch34.mlkcca.com', 'HJKKNPPHCNNJDKIL', 'hAYYdlfJaUJUCSKIegQEQaaWUTHfDjTQMgODXkhf');
+        this.dataStore = this.milkcocoa.dataStore('light');
+        this.dataStore.on('send', e=>{
+            console.log(e);
+            
+            if (e.path === 'light') {
+                this.udpPort.send({
+                    address: '/',
+                    args: [{ type: 'i', value: e.value }]
+                }, '0.0.0.0', P5_PORT);
+            }
 
         });
 
