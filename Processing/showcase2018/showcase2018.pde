@@ -43,11 +43,11 @@ void oscEvent(OscMessage theOscMessage) {
   println(" typetag: "+theOscMessage.typetag());
 
   theOscMessage.print();
-    println(theOscMessage.get(2).intValue());
+    println(theOscMessage.get(0).intValue());
     
    //if(theOscMessage.addrPattern() == "/light/")
   
-  if(theOscMessage.get(2).intValue() == 1 ){
+  if(theOscMessage.get(0).intValue() == 1 ){
     if (light1 == false){
         myPort.write(11);
         light1 = true;
@@ -55,8 +55,8 @@ void oscEvent(OscMessage theOscMessage) {
         myPort.write(111);
         light1 = false;
     }
-    print("1きたやで");
-}else if(theOscMessage.get(2).intValue() == 2){
+    print("1hoge");
+}else if(theOscMessage.get(0).intValue() == 2){
     if (light2 == false){
         myPort.write(22);
         light2 = true;
@@ -64,8 +64,8 @@ void oscEvent(OscMessage theOscMessage) {
         myPort.write(222);
         light2 = false;
     }
-   print("2きたやで");
-}else if(theOscMessage.get(2).intValue() == 3){
+   print("2hoge");
+}else if(theOscMessage.get(0).intValue() == 3){
      if (light3 == false){
         myPort.write(33);
         light3 = true;
@@ -73,8 +73,8 @@ void oscEvent(OscMessage theOscMessage) {
         myPort.write(34);
         light3 = false;
     }
-   print("3きたやで");
-}else if(theOscMessage.get(2).intValue() == 4){
+   print("3hoge");
+}else if(theOscMessage.get(0).intValue() == 4){
      if (light4 == false){
         myPort.write(44);
         light4 = true;
@@ -82,6 +82,6 @@ void oscEvent(OscMessage theOscMessage) {
         myPort.write(45);
         light4 = false;
     }
-   print("4きたやで");
+   print("4hoge");
 }
 }
