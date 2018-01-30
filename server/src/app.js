@@ -55,7 +55,7 @@ class App {
         this.dataStore = this.milkcocoa.dataStore('light');
         this.dataStore.on('send', e=>{
             console.log(e);
-            
+
             if (e.path === 'light') {
                 this.udpPort.send({
                     address: '/',

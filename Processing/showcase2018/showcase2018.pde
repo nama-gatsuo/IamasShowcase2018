@@ -47,7 +47,7 @@ void oscEvent(OscMessage theOscMessage) {
     
    //if(theOscMessage.addrPattern() == "/light/")
   
-  if(theOscMessage.get(0).intValue() == 1 ){
+  if(theOscMessage.get(0).intValue() == 0 ){
     if (light1 == false){
         myPort.write(11);
         light1 = true;
@@ -56,7 +56,7 @@ void oscEvent(OscMessage theOscMessage) {
         light1 = false;
     }
     print("1hoge");
-}else if(theOscMessage.get(0).intValue() == 2){
+}else if(theOscMessage.get(0).intValue() == 1){
     if (light2 == false){
         myPort.write(22);
         light2 = true;
@@ -65,7 +65,7 @@ void oscEvent(OscMessage theOscMessage) {
         light2 = false;
     }
    print("2hoge");
-}else if(theOscMessage.get(0).intValue() == 3){
+}else if(theOscMessage.get(0).intValue() == 2){
      if (light3 == false){
         myPort.write(33);
         light3 = true;
@@ -74,7 +74,7 @@ void oscEvent(OscMessage theOscMessage) {
         light3 = false;
     }
    print("3hoge");
-}else if(theOscMessage.get(0).intValue() == 4){
+}else if(theOscMessage.get(0).intValue() == 3){
      if (light4 == false){
         myPort.write(44);
         light4 = true;
